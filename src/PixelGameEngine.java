@@ -22,6 +22,10 @@ public class PixelGameEngine extends JFrame implements Runnable
 	
 	String name = "abc";
 
+	public static void main(String[] args){
+
+	}
+
 	public void drawSquare(GameSquare square)
 	{
 		handler.drawGameSquare(square);
