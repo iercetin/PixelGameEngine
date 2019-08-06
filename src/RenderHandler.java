@@ -39,25 +39,39 @@ public class RenderHandler {
 		}
 	}
 	
-	public void drawSquare(int squareXPos,int squareYpos,int squareWidth,int squareHeight,int color)
+	public void drawSquare(int squareXPos,int squareYPos,int squareWidth,int squareHeight,int color)
 	{
 		if(pixels != null)
 		{
-			int pixelStartIndex = (width * squareYpos) + squareXPos;	
+			int pixelStartIndex = (width * squareYPos) + squareXPos;
 			for(int a=0;a<squareHeight;a++)
 			{
 				for(int b=0;b<squareWidth;b++)
 				{
 					int processIndex = pixelStartIndex + b + (a*width);
-					pixels[processIndex] = color;
+					if(inPixelArray(processIndex))
+					{
+						pixels[processIndex] = color;
+					}
 				}
 			}
 		}
 	}
+
+	public boolean inPixelArray(int index)
+	{
+		System.out.println("index: "+index);
+		System.out.println("pixels.length: "+pixels.length);
+		if(index < pixels.length && index > 0)
+		{
+			return true;
+		}
+		return false;
+	}
 	
 	public void drawGameSquare(GameSquare gameSquare)
 	{
-		drawSquare(gameSquare.getSquareXPos(), gameSquare.getSquareYpos(), gameSquare.getSquareWidth(), gameSquare.getSquareHeight(),gameSquare.getColor());
+		drawSquare(gameSquare.getSquareXPos(), gameSquare.getSquareYPos(), gameSquare.getSquareWidth(), gameSquare.getSquareHeight(),gameSquare.getColor());
 	}
 
 }

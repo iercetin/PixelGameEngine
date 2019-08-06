@@ -1,10 +1,10 @@
 public class GameSquare 
 {
-	int squareXPos, squareYpos, squareWidth, squareHeight, color;
+	int squareXPos, squareYPos, squareWidth, squareHeight, color;
 	public GameSquare(int squareXPos, int squareYpos, int squareWidth, int squareHeight, int color) 
 	{
 		this.squareXPos 	= squareXPos;
-		this.squareYpos 	= squareYpos;
+		this.squareYPos 	= squareYpos;
 		this.squareWidth 	= squareWidth;
 		this.squareHeight 	= squareHeight;
 		this.color 			= color;
@@ -15,11 +15,11 @@ public class GameSquare
 	public void setSquareXPos(int squareXPos) {
 		this.squareXPos = squareXPos;
 	}
-	public int getSquareYpos() {
-		return squareYpos;
+	public int getSquareYPos() {
+		return squareYPos;
 	}
-	public void setSquareYpos(int squareYpos) {
-		this.squareYpos = squareYpos;
+	public void setSquareYPos(int squareYpos) {
+		this.squareYPos = squareYpos;
 	}
 	public int getSquareWidth() {
 		return squareWidth;

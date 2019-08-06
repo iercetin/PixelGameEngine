@@ -1,4 +1,4 @@
-import java.awt.Color;
+import java.awt.*;
 
 // This is an example game made using PixelGameEngine
 
@@ -21,6 +21,8 @@ public class YourGame extends PixelGameEngine{
 		// Start Coding Here..
 		player1 		= new GameSquare(100, 100, 20, 20, red);
 		player2 		= new GameSquare(100, 100, 20, 20, red);
+
+
 	}
 
 	// Render is called as much as possible (Depends on your computers speed)
@@ -29,7 +31,11 @@ public class YourGame extends PixelGameEngine{
 	{
 		updateBackground();
 		// Render Your Images Here
-		
+
+
+		player1.setSquareXPos((int) MouseInfo.getPointerInfo().getLocation().getX()-canvas.getLocationOnScreen().x);
+		player1.setSquareYPos((int) MouseInfo.getPointerInfo().getLocation().getY()-canvas.getLocationOnScreen().y);
+
 		drawSquare(player1);
 		drawSquare(player2);
 		
@@ -42,9 +48,7 @@ public class YourGame extends PixelGameEngine{
 	@Override
 	public void update() 
 	{
-		player1.setSquareXPos(player1.getSquareXPos() + 1);
-		player2.setSquareYpos(player2.getSquareYpos() + 1);
-		System.out.println("Update");
+
 	}
 
 
