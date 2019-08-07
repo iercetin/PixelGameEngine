@@ -40,26 +40,23 @@ public class RenderHandler {
 	}
 
 	public void drawSquare(int squareXPos,int squareYPos,int squareWidth,int squareHeight,int color) {
-		if(squareXPos >= width || squareYPos >= height)
-			return;
-		int pixelStartIndex = (width * squareYPos) + squareXPos;
-		for(int a=0;a<squareHeight;a++)
-		{
-			for(int b=0;b<squareWidth;b++)
-			{
+		for(int a=0;a<squareHeight;a++) {
+			for(int b=0;b<squareWidth;b++) {
 				int nextXPos = b + squareXPos;
 				int nextYPos = squareYPos + a;
 				if(!inScreenCoordinates(nextXPos,nextYPos)){
 					continue;
 				}
-				int processIndex = pixelStartIndex + b + (a*width);
-				if(inPixelArray(processIndex))
-				{
-					pixels[processIndex] = color;
-				}
+				int processIndex = nextXPos + (nextYPos*width);
+				drawPixel(processIndex,color);
 			}
 		}
+	}
 
+	public void drawPixel(int pixelIndex,int colorCode){
+		if(inPixelArray(pixelIndex)){
+			pixels[pixelIndex] = colorCode;
+		}
 	}
 
 	public boolean inScreenCoordinates(int x,int y){
