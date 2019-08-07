@@ -1,7 +1,6 @@
 import java.awt.*;
 
 // This is an example game made using PixelGameEngine
-
 public class YourGame extends PixelGameEngine{
 
 	public static void main(String[] args)
@@ -17,12 +16,15 @@ public class YourGame extends PixelGameEngine{
 
 	public YourGame(int width, int height) 
 	{
-		super(width, height);
 		// Start Coding Here..
+		super(width, height,"YourGame");
+		// Control your pixels here
+		int[] pixels = getPixels();
+
 		player1 		= new GameSquare(100, 100, 20, 20, red);
-		player2 		= new GameSquare(100, 100, 20, 20, red);
+		//player2 		= new GameSquare(100, 100, 20, 20, red);
 
-
+		System.out.println("Pixels: "+pixels.length);
 	}
 
 	// Render is called as much as possible (Depends on your computers speed)
@@ -31,13 +33,11 @@ public class YourGame extends PixelGameEngine{
 	{
 		updateBackground();
 		// Render Your Images Here
-
-
 		player1.setSquareXPos((int) MouseInfo.getPointerInfo().getLocation().getX()-canvas.getLocationOnScreen().x);
 		player1.setSquareYPos((int) MouseInfo.getPointerInfo().getLocation().getY()-canvas.getLocationOnScreen().y);
 
 		drawSquare(player1);
-		drawSquare(player2);
+		//drawSquare(player2);
 		
 		// Do not delete super.render() and keep it at the last line of the function
 		super.render();
@@ -50,6 +50,4 @@ public class YourGame extends PixelGameEngine{
 	{
 
 	}
-
-
 }

@@ -18,13 +18,11 @@ public class PixelGameEngine extends JFrame implements Runnable
 	static int red = new Color(255,0,0).getRGB();
 
 	int width = 500, height = 500;
-	int[] pixels;
-	
-	String name = "abc";
+	public int[] pixels;
 
-	public static void main(String[] args){
+	public int[] getPixels(){ return pixels; };
+	public void setPixels(int[] newPixels){ pixels = newPixels; };
 
-	}
 
 	public void drawSquare(GameSquare square)
 	{
@@ -43,7 +41,6 @@ public class PixelGameEngine extends JFrame implements Runnable
 
 	public void run()
 	{
-		System.out.println("Run");
 		long lastTime 				= System.nanoTime();
 		int framesPerSecond 		= 24;
 		double nanoSecondConversion = 1000000000.0 / framesPerSecond;
@@ -66,11 +63,11 @@ public class PixelGameEngine extends JFrame implements Runnable
 	public void update()
 	{
 		// Update Game Vars Here
-		System.out.println("Update");
 	}
 
-	public PixelGameEngine(int width,int height) 
+	public PixelGameEngine(int width,int height,String name)
 	{
+		super(name);
 		// Initialize Values
 		this.width 	= width;
 		this.height = height;

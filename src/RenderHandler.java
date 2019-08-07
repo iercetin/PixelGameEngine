@@ -38,30 +38,40 @@ public class RenderHandler {
 			pixels[x] = black;
 		}
 	}
-	
-	public void drawSquare(int squareXPos,int squareYPos,int squareWidth,int squareHeight,int color)
-	{
-		if(pixels != null)
+
+	public void drawSquare(int squareXPos,int squareYPos,int squareWidth,int squareHeight,int color) {
+		if(squareXPos >= width || squareYPos >= height)
+			return;
+		int pixelStartIndex = (width * squareYPos) + squareXPos;
+		for(int a=0;a<squareHeight;a++)
 		{
-			int pixelStartIndex = (width * squareYPos) + squareXPos;
-			for(int a=0;a<squareHeight;a++)
+			for(int b=0;b<squareWidth;b++)
 			{
-				for(int b=0;b<squareWidth;b++)
+				int nextXPos = b + squareXPos;
+				int nextYPos = squareYPos + a;
+				if(!inScreenCoordinates(nextXPos,nextYPos)){
+					continue;
+				}
+				int processIndex = pixelStartIndex + b + (a*width);
+				if(inPixelArray(processIndex))
 				{
-					int processIndex = pixelStartIndex + b + (a*width);
-					if(inPixelArray(processIndex))
-					{
-						pixels[processIndex] = color;
-					}
+					pixels[processIndex] = color;
 				}
 			}
 		}
+
+	}
+
+	public boolean inScreenCoordinates(int x,int y){
+		if(x < 0 || x >= width)
+			return false;
+		if(y < 0 || y >= height)
+			return false;
+		return true;
 	}
 
 	public boolean inPixelArray(int index)
 	{
-		System.out.println("index: "+index);
-		System.out.println("pixels.length: "+pixels.length);
 		if(index < pixels.length && index > 0)
 		{
 			return true;
