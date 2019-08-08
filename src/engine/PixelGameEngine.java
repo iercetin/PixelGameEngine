@@ -1,5 +1,6 @@
 package engine;
 
+import shapes.Circle;
 import shapes.Rectangle;
 
 import java.awt.*;
@@ -7,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
+
 
 
 public class PixelGameEngine extends JFrame implements Runnable {
@@ -65,6 +67,8 @@ public class PixelGameEngine extends JFrame implements Runnable {
         this.width 	= width;
         this.height = height;
 
+
+
         // Add Frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(0, 0, width, height);
@@ -107,5 +111,9 @@ public class PixelGameEngine extends JFrame implements Runnable {
 
     public void drawRectangle(Rectangle rectangle){
         handler.drawRectangle(rectangle.getRectXPos(),rectangle.getRectYPos(),rectangle.getRectWidth(),rectangle.getRectHeight(),rectangle.getColor());
+    }
+
+    public void drawCircle(Circle circle){
+        handler.circleMidpoint(circle.getxCenter(),circle.getyCenter(),circle.getRadius(),circle.getColor());
     }
 }

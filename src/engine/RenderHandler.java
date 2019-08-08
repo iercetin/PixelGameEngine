@@ -41,12 +41,15 @@ public class RenderHandler {
             for(int b=0;b<squareWidth;b++) {
                 int nextXPos = b + squareXPos;
                 int nextYPos = squareYPos + a;
-                if(!inScreenCoordinates(nextXPos,nextYPos)){
-                    continue;
-                }
-                int processIndex = nextXPos + (nextYPos*width);
-                drawPixel(processIndex,color);
+                setPixel(nextXPos,nextYPos,color);
             }
+        }
+    }
+
+    public void setPixel(int x,int y,int color){
+        if(inScreenCoordinates(x,y)){
+            int pixelIndex = x + (y*width);
+            drawPixel(pixelIndex,color);
         }
     }
 
@@ -70,10 +73,49 @@ public class RenderHandler {
         return false;
     }
 
-    /*
-    public void drawGameSquare(GameSquare gameSquare) {
-        drawRectangle(gameSquare.getSquareXPos(), gameSquare.getSquareYPos(), gameSquare.getSquareWidth(), gameSquare.getSquareHeight(),gameSquare.getColor());
+    private final void circlePoints(int cx, int cy, int x, int y, int color)
+    {
+        if (x == 0) {
+            setPixel( cx, cy + y,color);
+            setPixel( cx, cy - y,color);
+            setPixel( cx + y, cy,color);
+            setPixel( cx - y, cy,color);
+        } else
+        if (x == y) {
+            setPixel( cx + x, cy + y,color);
+            setPixel( cx - x, cy + y,color);
+            setPixel( cx + x, cy - y,color);
+            setPixel( cx - x, cy - y,color);
+        } else
+        if (x < y) {
+            setPixel( cx + x, cy + y,color);
+            setPixel( cx - x, cy + y,color);
+            setPixel( cx + x, cy - y,color);
+            setPixel( cx - x, cy - y,color);
+            setPixel( cx + y, cy + x,color);
+            setPixel( cx - y, cy + x,color);
+            setPixel( cx + y, cy - x,color);
+            setPixel( cx - y, cy - x,color);
+        }
     }
-    */
+
+    public void circleMidpoint(int xCenter, int yCenter, int radius, int color) {
+        int x = 0;
+        int y = radius;
+        int p = (5 - radius*4)/4;
+
+        circlePoints(xCenter, yCenter, x, y, color);
+        while (x < y) {
+            x++;
+            if (p < 0) {
+                p += 2*x+1;
+            } else {
+                y--;
+                p += 2*(x-y)+1;
+            }
+            circlePoints(xCenter, yCenter, x, y, color);
+        }
+    }
+
 }
 

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PixelGameEngine:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PixelGameEngine_jar</output-path>
+    <root id="archive" name="PixelGameEngine.jar">
+      <element id="module-output" name="PixelGameEngine" />
+    </root>
+  </artifact>
+</component>
