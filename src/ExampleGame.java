@@ -1,5 +1,6 @@
 import engine.PixelGameEngine;
 import shapes.Circle;
+import shapes.Line;
 import shapes.Rectangle;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class ExampleGame extends PixelGameEngine {
     // Example Game Objects
     Rectangle player1;
     Circle player2;
-
+    Line line;
 
     int player1X = 10;
 
@@ -30,6 +31,8 @@ public class ExampleGame extends PixelGameEngine {
 
         player1 = new Rectangle(100, 100, 10, 10, red);
         player2 = new Circle(100,100,30,red);
+        line    = new Line(100,100,250,200,red);
+
 
         System.out.println("Pixels: "+pixels.length);
     }
@@ -37,7 +40,8 @@ public class ExampleGame extends PixelGameEngine {
     // Render is called as much as possible (Depends on your computers speed)
     @Override
     public void render() {
-        updateBackground();
+        // updateBackground();
+        fancyBackground();
         drawRectangle(player1);
         //drawRectangle(player2);
         drawCircle(player2);
@@ -48,7 +52,18 @@ public class ExampleGame extends PixelGameEngine {
         player2.setxCenter(getMouseX());
         player2.setyCenter(getMouseY());
 
+        drawLine(line);
+
         super.render();
+    }
+
+    public void fancyBackground(){
+        //Colors
+        int green = Color.GREEN.getRGB();
+
+        for(int i=0;i<pixels.length;i++){
+            pixels[i] = green;
+        }
     }
 
     // Update is called every 1 / 24 seconds

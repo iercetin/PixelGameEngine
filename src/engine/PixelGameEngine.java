@@ -1,6 +1,7 @@
 package engine;
 
 import shapes.Circle;
+import shapes.Line;
 import shapes.Rectangle;
 
 import java.awt.*;
@@ -115,5 +116,9 @@ public class PixelGameEngine extends JFrame implements Runnable {
 
     public void drawCircle(Circle circle){
         handler.circleMidpoint(circle.getxCenter(),circle.getyCenter(),circle.getRadius(),circle.getColor());
+    }
+
+    public void drawLine(Line line){
+        handler.drawLine(line.getStartX(),line.getStartY(),line.getEndX(),line.getEndY(),line.getColor());
     }
 }
