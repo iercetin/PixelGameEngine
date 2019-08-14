@@ -8,7 +8,7 @@ import java.awt.*;
 // This is an example game made using PixelGameEngine
 public class ExampleGame extends PixelGameEngine {
     static int red = new Color(255,0,0).getRGB();
-    int[] pixels = getPixels();
+    int[] pixels;
 
     public static void main(String[] args) {
         ExampleGame pixel 	= new ExampleGame(700,700);
