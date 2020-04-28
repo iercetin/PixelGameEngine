@@ -10,8 +10,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
-
-
 public class PixelGameEngine extends JFrame implements Runnable {
     Canvas canvas;
     Graphics graphics;
@@ -25,7 +23,6 @@ public class PixelGameEngine extends JFrame implements Runnable {
 
     public int[] getPixels(){ return pixels; };
     public void setPixels(int[] newPixels){ pixels = newPixels; };
-
 
     public void render()
     {
@@ -67,8 +64,6 @@ public class PixelGameEngine extends JFrame implements Runnable {
         this.name 	= name;
         this.width 	= width;
         this.height = height;
-
-
 
         // Add Frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

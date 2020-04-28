@@ -11,8 +11,8 @@ public class ExampleGame extends PixelGameEngine {
     int[] pixels;
 
     public static void main(String[] args) {
-        ExampleGame pixel 	= new ExampleGame(700,700);
-        Thread thread 	= new Thread(pixel);
+        ExampleGame game 	= new ExampleGame(700,700);
+        Thread thread 	= new Thread(game);
         thread.start();
     }
 
@@ -41,7 +41,7 @@ public class ExampleGame extends PixelGameEngine {
     @Override
     public void render() {
         // updateBackground();
-        fancyBackground();
+        //fancyBackground();
         drawRectangle(player1);
         //drawRectangle(player2);
         drawCircle(player2);
